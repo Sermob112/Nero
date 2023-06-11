@@ -10,7 +10,7 @@ x_train = np.array([5, 6, 7, 8, 9, 10])
 y_train = np.sqrt(np.abs(x_train**2))
 
 # Количество радиально-базисных функций
-num_basis_functions = 50
+num_basis_functions =  5
 
 # Инициализация случайных весовых коэффициентов
 weights = np.random.randn(num_basis_functions)
