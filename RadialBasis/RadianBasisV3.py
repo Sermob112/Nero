@@ -5,13 +5,13 @@ def radial_basis_function(x, centers, widths):
 
 def train_rbf_network(x_train, y_train, n_centers, learning_rate, training_epochs):
     # Инициализация центров и ширины радиальных базисных функций
-    centers = np.linspace(-5, 5, n_centers)
-    widths = np.ones(n_centers) * 0.5
+    centers = np.linspace(1, 5, n_centers)
+    widths = 0.5
 
     # Генерация матрицы признаков с радиально базисными функциями
     phi = radial_basis_function(x_train[:, np.newaxis], centers, widths)
 
-    # Инициализация случайных весов
+
     weights = np.random.randn(n_centers)
 
     # Обучение модели
@@ -29,11 +29,11 @@ def train_rbf_network(x_train, y_train, n_centers, learning_rate, training_epoch
     return centers, widths, weights
 
 # Генерация обучающих данных
-x_train = np.linspace(-5, 5, 1000)
+x_train = np.linspace(1, 5, 10)
 y_train = np.sqrt(np.abs(x_train**2))
 
 # Задание параметров нейросети
-n_centers = 10
+n_centers = 4
 learning_rate = 0.01
 training_epochs = 100
 
@@ -41,7 +41,7 @@ training_epochs = 100
 centers, widths, weights = train_rbf_network(x_train, y_train, n_centers, learning_rate, training_epochs)
 
 # Генерация тестовых данных
-x_test = np.linspace(-5, 5, 100)
+x_test = np.linspace(1, 5, 10)
 y_test = np.sqrt(np.abs(x_test**2))
 
 # Вычисление предсказаний модели для тестовых данных
