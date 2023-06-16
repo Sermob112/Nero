@@ -14,7 +14,7 @@ def train_rbf_network(x_train, y_train, n_centers, learning_rate, training_epoch
 
     weights = np.random.randn(n_centers)
 
-    # Обучение модели
+    #Обучение модели
     for epoch in range(training_epochs):
         # Вычисление предсказаний модели
         y_pred = np.dot(phi, weights)
@@ -33,7 +33,7 @@ x_train = np.linspace(1, 5, 10)
 y_train = np.sqrt(np.abs(x_train**2))
 
 # Задание параметров нейросети
-n_centers = 4
+n_centers = 10
 learning_rate = 0.01
 training_epochs = 100
 
@@ -41,7 +41,7 @@ training_epochs = 100
 centers, widths, weights = train_rbf_network(x_train, y_train, n_centers, learning_rate, training_epochs)
 
 # Генерация тестовых данных
-x_test = np.linspace(1, 5, 10)
+x_test = np.linspace(1, 5, 100)
 y_test = np.sqrt(np.abs(x_test**2))
 
 # Вычисление предсказаний модели для тестовых данных
