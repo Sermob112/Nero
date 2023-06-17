@@ -13,6 +13,7 @@ class KohonenNetwork:
                 winner_index = self.get_winner_neuron(sample)
                 self.update_weights(sample, winner_index, learning_rate)
 
+    ##ищем победителя, получаем номер выходного нейрона к которому ближе всего вектор входного значения
     def get_winner_neuron(self, sample):
         distances = np.sum((self.weights - sample) ** 2, axis=(2,))
         winner_index = np.unravel_index(np.argmin(distances), distances.shape)
@@ -40,7 +41,7 @@ class KohonenNetwork:
         for i, sample in enumerate(input_data):
             cluster_index = clusters[i]
             plt.scatter(sample[0], sample[1], color=f"C{cluster_index[0] * self.output_dim[1] + cluster_index[1]}")
-        plt.title('Kohonen Clustering')
+        plt.title('Класстеры по цвету')
         plt.xlabel('X')
         plt.ylabel('Y')
         plt.show()
@@ -48,8 +49,10 @@ class KohonenNetwork:
 
 # Example usage:
 input_data = np.array([[0.2, 0.3], [0.5, 0.8], [0.1, 0.9], [0.3, 0.2], [0.7, 0.4], [0.6, 0.1], [0.9, 0.7], [0.8, 0.9]])
+##Количество входных нейронов зависит от количества признаков, у меня точки, соответственно, 2 признака х и у
 input_dim = (2,)
-output_dim = (1, 3)
+##3 класстера
+output_dim = (1,3)
 
 network = KohonenNetwork(input_dim, output_dim)
 network.train(input_data, learning_rate=0.1, epochs=100)
